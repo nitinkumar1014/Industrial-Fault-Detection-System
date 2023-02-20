@@ -1,0 +1,57 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: µVision V5.27.1.0
+Copyright (C) 2019 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: Nitin Kumar K, XXX, LIC=----
+ 
+Tool Versions:
+Toolchain:       PK51 Prof. Develpers Kit  Version: 9.60.0.0
+Toolchain Path:  F:\Softwares\Keil\C51\BIN
+C Compiler:      C51.exe V9.60.0.0
+Assembler:       A51.exe V8.2.7.0
+Linker/Locator:  BL51.exe V6.22.2.0
+Library Manager: LIB51.exe V4.30.1.0
+Hex Converter:   OH51.exe V2.7.0.0
+CPU DLL:         S8051.DLL V3.122.0.0
+Dialog DLL:      DP51.DLL V2.67.0.0 
+<h2>Project:</h2>
+F:\Works\Industrial Fault Detection System\Programming\IFDS.uvproj
+Project File Date:  12/25/2022
+
+<h2>Output:</h2>
+Rebuild target 'Target 1'
+assembling STARTUP.A51...
+compiling main.c...
+compiling Delay.c...
+compiling LCD_8Bit_Driver.c...
+compiling LED_Driver.c...
+compiling Switch_Driver.c...
+compiling Keypad_Driver.c...
+compiling I2C_Fields.c...
+compiling I2C_Frames.c...
+compiling MCP3204_Driver.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?SWITCH?SWITCH_DRIVER
+*** WARNING L15: MULTIPLE CALL TO SEGMENT
+    SEGMENT: ?PR?_I2C_BYTE_WRITE_FRAME?I2C_FRAMES
+    CALLER1: ?C_C51STARTUP
+    CALLER2: ?PR?EXT_INT?MAIN
+*** WARNING L15: MULTIPLE CALL TO SEGMENT
+    SEGMENT: ?PR?_WRITE_STR_LCD?LCD_8BIT_DRIVER
+    CALLER1: ?C_C51STARTUP
+    CALLER2: ?PR?EXT_INT?MAIN
+*** WARNING L15: MULTIPLE CALL TO SEGMENT
+    SEGMENT: ?PR?_I2C_BYTE_READ_FRAME?I2C_FRAMES
+    CALLER1: ?C_C51STARTUP
+    CALLER2: ?PR?EXT_INT?MAIN
+Program Size: data=31.2 xdata=0 code=1985
+creating hex file from ".\Objects\IFDS"...
+".\Objects\IFDS" - 0 Error(s), 4 Warning(s).
+Build Time Elapsed:  00:00:01
+</pre>
+</body>
+</html>

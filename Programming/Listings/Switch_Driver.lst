@@ -1,0 +1,31 @@
+C51 COMPILER V9.60.0.0   SWITCH_DRIVER                                                     12/27/2022 13:31:03 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE SWITCH_DRIVER
+OBJECT MODULE PLACED IN .\Objects\Switch_Driver.obj
+COMPILER INVOKED BY: F:\Softwares\Keil\C51\BIN\C51.EXE Switch_Driver.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT
+                    -(.\Listings\Switch_Driver.lst) TABS(2) OBJECT(.\Objects\Switch_Driver.obj)
+
+line level    source
+
+   1          #include "header.h"
+   2          
+   3          sbit SW = P3^2;
+   4          
+   5          bit Switch (void) {
+   6   1        return SW;
+   7   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =      3    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

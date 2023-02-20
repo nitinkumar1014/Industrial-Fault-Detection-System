@@ -1,0 +1,12 @@
+".\Objects\STARTUP.obj",
+".\Objects\main.obj",
+".\Objects\Delay.obj",
+".\Objects\LCD_8Bit_Driver.obj",
+".\Objects\LED_Driver.obj",
+".\Objects\Switch_Driver.obj",
+".\Objects\Keypad_Driver.obj",
+".\Objects\I2C_Fields.obj",
+".\Objects\I2C_Frames.obj",
+".\Objects\MCP3204_Driver.obj" 
+TO ".\Objects\IFDS" 
+PRINT(".\Listings\IFDS.m51") RAMSIZE(256) 

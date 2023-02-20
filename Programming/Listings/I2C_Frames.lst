@@ -1,0 +1,79 @@
+C51 COMPILER V9.60.0.0   I2C_FRAMES                                                        12/27/2022 13:31:04 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE I2C_FRAMES
+OBJECT MODULE PLACED IN .\Objects\I2C_Frames.obj
+COMPILER INVOKED BY: F:\Softwares\Keil\C51\BIN\C51.EXE I2C_Frames.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\
+                    -Listings\I2C_Frames.lst) TABS(2) OBJECT(.\Objects\I2C_Frames.obj)
+
+line level    source
+
+   1          #include "header.h"
+   2          
+   3          void I2C_Byte_Write_Frame (U8 Slave_Address, U8 Memory_Address, U8 Data) {
+   4   1        bit R;
+   5   1        I2C_Start();
+   6   1        I2C_Write(Slave_Address); //Write Slave Address SA + W
+   7   1        R = I2C_Acknowledgement();
+   8   1        if (R == SET) 
+   9   1          goto Exit;
+  10   1        
+  11   1        I2C_Write(Memory_Address); //Write Memory Address
+  12   1        R = I2C_Acknowledgement();
+  13   1        if (R == SET) 
+  14   1          goto Exit;
+  15   1        
+  16   1        I2C_Write(Data); //Write Data
+  17   1        R = I2C_Acknowledgement();
+  18   1        if (R == SET) 
+  19   1          goto Exit;
+  20   1        
+  21   1        Exit:
+  22   1          I2C_Stop();
+  23   1      }
+  24          
+  25          U8 I2C_Byte_Read_Frame (U8 Slave_Address, U8 Memory_Address) {
+  26   1        U8 Temp = 0;
+  27   1        bit R;
+  28   1        
+  29   1        I2C_Start();
+  30   1        I2C_Write(Slave_Address); //Write Slave Address SA + W
+  31   1        R = I2C_Acknowledgement();
+  32   1        if (R == SET) 
+  33   1          goto Exit;
+  34   1        
+  35   1        I2C_Write(Memory_Address); //Write Memory Address
+  36   1        R = I2C_Acknowledgement();
+  37   1        if (R == SET) 
+  38   1          goto Exit;
+  39   1        
+  40   1        I2C_Start();
+  41   1        I2C_Write(Slave_Address | 1); //Write Slave Address SA + R
+  42   1        R = I2C_Acknowledgement();
+  43   1        if (R == SET) 
+  44   1          goto Exit;
+  45   1        
+  46   1        Temp = I2C_Read(); //Get Data from Slave
+  47   1        I2C_No_Acknowledgement();
+  48   1        
+  49   1        Exit:
+  50   1          I2C_Stop();
+  51   1        
+  52   1        return Temp;
+  53   1      }
+
+C51 COMPILER V9.60.0.0   I2C_FRAMES                                                        12/27/2022 13:31:04 PAGE 2   
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    117    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       6
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----       2
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

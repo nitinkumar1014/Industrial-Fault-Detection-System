@@ -1,0 +1,40 @@
+C51 COMPILER V9.60.0.0   LED                                                               12/23/2022 18:37:24 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE LED
+OBJECT MODULE PLACED IN .\Objects\LED.obj
+COMPILER INVOKED BY: F:\Softwares\Keil\C51\BIN\C51.EXE LED.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listing
+                    -s\LED.lst) TABS(2) OBJECT(.\Objects\LED.obj)
+
+line level    source
+
+   1          #include <reg52.h>
+   2          #include "Delay.h"
+   3          #include "Types.h"
+   4          
+   5          sbit G_LED = P2^3;
+   6          sbit R_LED = P2^4;
+   7          
+   8          void Green_LED (U8 State)
+   9          {
+  10   1        G_LED = State;
+  11   1      }
+  12          
+  13          void Red_LED (U8 State)
+  14          {
+  15   1        R_LED = State;
+  16   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     12    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

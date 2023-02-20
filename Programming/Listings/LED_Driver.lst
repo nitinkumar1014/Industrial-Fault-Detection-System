@@ -1,0 +1,36 @@
+C51 COMPILER V9.60.0.0   LED_DRIVER                                                        12/27/2022 13:31:03 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE LED_DRIVER
+OBJECT MODULE PLACED IN .\Objects\LED_Driver.obj
+COMPILER INVOKED BY: F:\Softwares\Keil\C51\BIN\C51.EXE LED_Driver.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\
+                    -Listings\LED_Driver.lst) TABS(2) OBJECT(.\Objects\LED_Driver.obj)
+
+line level    source
+
+   1          #include "header.h"
+   2          
+   3          sbit G_LED = P2^3;
+   4          sbit R_LED = P2^4;
+   5          
+   6          void Green_LED (U8 State) {
+   7   1        G_LED = State;
+   8   1      }
+   9          
+  10          void Red_LED (U8 State) {
+  11   1        R_LED = State;
+  12   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     12    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

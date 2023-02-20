@@ -1,0 +1,115 @@
+C51 COMPILER V9.60.0.0   KEYPAD_DRIVER                                                     12/27/2022 13:31:04 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE KEYPAD_DRIVER
+OBJECT MODULE PLACED IN .\Objects\Keypad_Driver.obj
+COMPILER INVOKED BY: F:\Softwares\Keil\C51\BIN\C51.EXE Keypad_Driver.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT
+                    -(.\Listings\Keypad_Driver.lst) TABS(2) OBJECT(.\Objects\Keypad_Driver.obj)
+
+line level    source
+
+   1          #include "header.h"
+   2          
+   3          sbit ROW0 = P1^0;
+   4          sbit ROW1 = P1^1;
+   5          sbit ROW2 = P1^2;
+   6          sbit ROW3 = P1^3;
+   7          sbit COL0 = P1^4;
+   8          sbit COL1 = P1^5;
+   9          sbit COL2 = P1^6;
+  10          sbit COL3 = P1^7;
+  11          
+  12          //4x4 Keypad Matrix Lookup Table
+  13          code U8 Keypad_Table[][4] = {{7, 8, 9, 'A'}, 
+  14                                       {4, 5, 6, 'F'}, 
+  15                                       {1, 2, 3, 'K'}, 
+  16                                       {0, 0, '=', 'P'}};
+  17          
+  18          
+  19          void Keypad_Init() {
+  20   1        ROW0 = CLEAR;
+  21   1        ROW1 = CLEAR;
+  22   1        ROW2 = CLEAR;
+  23   1        ROW3 = CLEAR;
+  24   1        COL0 = SET;
+  25   1        COL1 = SET;
+  26   1        COL2 = SET;
+  27   1        COL3 = SET;
+  28   1      }
+  29          
+  30          //Getting the Key Pressed
+  31          U8 Key_Scan (void) {
+  32   1        U8 ROW, COL;
+  33   1        
+  34   1        Keypad_Init();
+  35   1        while ((COL0 & COL1 & COL2 & COL3) == SET); //Waiting for switch pressing
+  36   1        
+  37   1        //Checking ROW 0
+  38   1        ROW0 = CLEAR;
+  39   1        ROW1 = SET;
+  40   1        ROW2 = SET;
+  41   1        ROW3 = SET;
+  42   1        if ((COL0 & COL1 & COL2 & COL3) == CLEAR) {
+  43   2          ROW = 0;
+  44   2          goto COL_Check;
+  45   2        }
+  46   1        
+  47   1        //Checking ROW 1
+  48   1        ROW0 = SET;
+  49   1        ROW1 = CLEAR;
+  50   1        ROW2 = SET;
+  51   1        ROW3 = SET;
+  52   1        if ((COL0 & COL1 & COL2 & COL3) == CLEAR) {
+  53   2          ROW = 1;
+  54   2          goto COL_Check;
+C51 COMPILER V9.60.0.0   KEYPAD_DRIVER                                                     12/27/2022 13:31:04 PAGE 2   
+
+  55   2        }
+  56   1        
+  57   1        //Checking ROW 2
+  58   1        ROW0 = SET;
+  59   1        ROW1 = SET;
+  60   1        ROW2 = CLEAR;
+  61   1        ROW3 = SET;
+  62   1        if ((COL0 & COL1 & COL2 & COL3) == CLEAR) {
+  63   2          ROW = 2;
+  64   2          goto COL_Check;
+  65   2        }
+  66   1        
+  67   1        //Checking ROW 3
+  68   1        ROW0 = SET;
+  69   1        ROW1 = SET;
+  70   1        ROW2 = SET;
+  71   1        ROW3 = CLEAR;
+  72   1        if ((COL0 & COL1 & COL2 & COL3) == CLEAR) {
+  73   2          ROW = 3;
+  74   2          goto COL_Check;
+  75   2        }
+  76   1        
+  77   1        //Checking Columns
+  78   1        COL_Check:
+  79   1          if (COL0 == CLEAR)
+  80   1            COL = 0;
+  81   1          else if (COL1 == CLEAR)
+  82   1            COL = 1;
+  83   1          else if (COL2 == CLEAR)
+  84   1            COL = 2;
+  85   1          else if (COL3 == CLEAR)
+  86   1            COL = 3;
+  87   1          
+  88   1        return Keypad_Table[ROW][COL];
+  89   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    170    ----
+   CONSTANT SIZE    =     16    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

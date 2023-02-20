@@ -1,0 +1,59 @@
+C51 COMPILER V9.60.0.0   MCP3204_DRIVER                                                    12/27/2022 13:31:04 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MCP3204_DRIVER
+OBJECT MODULE PLACED IN .\Objects\MCP3204_Driver.obj
+COMPILER INVOKED BY: F:\Softwares\Keil\C51\BIN\C51.EXE MCP3204_Driver.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRIN
+                    -T(.\Listings\MCP3204_Driver.lst) TABS(2) OBJECT(.\Objects\MCP3204_Driver.obj)
+
+line level    source
+
+   1          #include "header.h"
+   2          
+   3          sbit CLK = P3^0;
+   4          sbit DIn = P3^1;
+   5          sbit DOut = P3^3;
+   6          sbit CS = P3^4;
+   7          
+   8          U16 ADC_Read (void) {
+   9   1        U16 Temp = 0;
+  10   1        S8 i;
+  11   1        
+  12   1        CS = CLEAR; //Select the Slave for communication (or) ADC is ON
+  13   1        
+  14   1        CLK = CLEAR; DIn = SET; CLK = SET; //Start Bit
+  15   1        CLK = CLEAR; DIn = SET; CLK = SET; //Single-ended Mode selected
+  16   1        
+  17   1        //Channel Selection
+  18   1        CLK = CLEAR; DIn = SET; CLK = SET; // D2 is don't care for MCP3204
+  19   1        CLK = CLEAR; DIn = CLEAR; CLK = SET; //D1
+  20   1        CLK = CLEAR; DIn = CLEAR; CLK = SET; //D0 + Start Sampling
+  21   1        
+  22   1        CLK = CLEAR; DIn = SET; CLK = SET; //Stop Sampling
+  23   1        CLK = CLEAR; DIn = SET; CLK = SET; //Null Bit
+  24   1        
+  25   1        //Reading 12 -Bit digital output from ADC
+  26   1        for ( i = 11; i >= 0; i--) {
+  27   2          CLK = CLEAR;
+  28   2          if (DOut == SET) 
+  29   2            Temp = Temp | (1 << i);
+  30   2          CLK = SET;
+  31   2        }
+  32   1        
+  33   1        CS = SET; //Slave is deselected from communication (or) ADC is OFF
+  34   1        return Temp;
+  35   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    100    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
