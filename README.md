@@ -22,7 +22,7 @@
 4. Write main code.
 5. Compile and build project.
 
-	***NOTE: Make sure you create the hex file and Code mamory is less than 2.5MB***
+	***NOTE: Make sure you create the hex file and Code memory is less than 2.5MB***
 	
 #### Simulation
 1. Install the Simulator.
